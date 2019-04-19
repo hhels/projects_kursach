@@ -19,8 +19,7 @@ namespace fitnes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Hide();
-            new MainClient().Show();
+            Close();
         }
     }
 }
