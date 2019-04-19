@@ -28,21 +28,8 @@ namespace fitnes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Hide();
-            new Aboniment().Show();
-        }
-
-
-        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e) 
-        {
-            e.ToString();
-            //string op = comboBox1.SelectedIndex.ToString();
-            //MessageBox.Show(op);
-            //var pos = ((ComboBox)sender).SelectedText;
-            //MessageBox.Show(pos);
-            //_kto = DbConnector.ExecuteQuery($"SELECT FirstName, LastName FROM  Users AS U JOIN Workers AS W on U.idUsers = W.idUser WHERE W.Position = '{comboBox1.SelectedText}'");
-            //comboBox2.DataSource = _kto;
-            //comboBox2.DisplayMember = "FirstName";
+            //Hide();
+            new Aboniment().ShowDialog();
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
@@ -57,7 +44,7 @@ namespace fitnes
         private void button2_Click(object sender, EventArgs e)
         {
             var y = comboBox2.Text;
-            dataGridView1.DataSource =  DbConnector.ExecuteQuery($"SELECT * FROM Time AS T, Users AS U WHERE T.date = '{label1.Text}' AND U.FirstName = '{y}'");
+            dataGridView1.DataSource = DbConnector.ExecuteQuery($"SELECT * FROM Time AS T, Users AS U WHERE T.date = '{label1.Text}' AND U.FirstName = '{y}'");
         }
     }
 }
