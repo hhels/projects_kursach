@@ -1,19 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace fitnes
 {
-    static class llogin //значение логина
-    {
-        public static string Value { get; set; }
-    }
-
     public static class DbConnector
     {
         private const string dbServer = "127.0.0.1";
