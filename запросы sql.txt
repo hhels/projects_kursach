@@ -1,0 +1,18 @@
+SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '{lable1.Text}')   ... айди работника которому показвать
+SELECT Clients_idUsers FROM Records WHERE idWorker = //// тому что выше////                              ... айди пользователя который записан
+SELECT LastName, FirstName FROM Users WHERE idUsers = //// тому что выше////                             ... имя фамилия тего кто записался
+
+
+
+SELECT LastName FROM Users WHERE idUsers = ( SELECT Clients_idUsers FROM Records WHERE idWorker = (SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '2'))LIMIT 1)
+SELECT date, 9-10, 10-11, 11-12, 13-14, 14-15, 15-16 FROM Time WHERE Workers_idWorkers IN //// к первой записи //// AND 9-10 = 1, 10-11 = 1, 11-12 = 1, 13-14 = 1, 14-15 = 1, 15-16 = 1
+
+
+SELECT date, 9-10, 10-11, 11-12, 13-14, 14-15, 15-16 FROM Time WHERE Workers_idWorkers IN (SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '2')) AND 9-10 = 1, 10-11 = 1, 11-12 = 1, 13-14 = 1, 14-15 = 1, 15-16 = 1
+SELECT date, `9-10`, `10-11`, `11-12`, `13-14`, `14-15`, `15-16` FROM Time WHERE Workers_idWorkers IN (SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '2'))
+
+
+
+
+
+SELECT T.date, T.`9-10`, T.`10-11`, T.`11-12`, T.`13-14`, T.`14-15`, T.`15-16` U.LastName, U.FirstName FROM Time AS T JOIN Users AS U ON T.Workers_idUser = U.idUsers WHERE T.Workers_idWorkers IN (SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '2')) AND U.idUsers IN  ( SELECT Clients_idUsers FROM Records WHERE idWorker = (SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '2')))

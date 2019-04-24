@@ -27,8 +27,9 @@ namespace fitnes
 
         private void MainWorkers_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = DbConnector.ExecuteQuery("SELECT * FROM Records").AsEnumerable();
             textBox1.Text = _workers;
+            dataGridView1.DataSource = DbConnector.ExecuteQuery( $"  SELECT LastName, FirstName FROM Users WHERE idUsers IN  ( SELECT Clients_idUsers FROM Records WHERE idWorker = (SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '{textBox1.Text}')))");
+
 
         }
 
