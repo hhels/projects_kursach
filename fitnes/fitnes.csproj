@@ -54,6 +54,7 @@
     <Compile Include="Aboniment.Designer.cs">
       <DependentUpon>Aboniment.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentUser.cs" />
     <Compile Include="DbConnector.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

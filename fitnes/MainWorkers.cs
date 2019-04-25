@@ -12,25 +12,18 @@ namespace fitnes
 {
     public partial class MainWorkers : Form
     {
-        //public string Txt
-        //{
-        //    get { return textBox1.Text; }
-        //    set { textBox1.Text = value; }
-        //}
         public string _workers;
 
-        public MainWorkers(string workers)
+        public MainWorkers()
         {
             InitializeComponent();
-            _workers = workers;
+            _workers = CurrentUser.Login;
         }
 
         private void MainWorkers_Load(object sender, EventArgs e)
         {
             textBox1.Text = _workers;
-            dataGridView1.DataSource = DbConnector.ExecuteQuery( $"  SELECT LastName, FirstName FROM Users WHERE idUsers IN  ( SELECT Clients_idUsers FROM Records WHERE idWorker = (SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '{textBox1.Text}')))");
-
-
+            dataGridView1.DataSource = DbConnector.ExecuteQuery($"  SELECT LastName, FirstName FROM Users WHERE idUsers IN  ( SELECT Clients_idUsers FROM Records WHERE idWorker = (SELECT idWorkers FROM Workers WHERE idUser = (SELECT idUsers FROM Users WHERE Login = '{textBox1.Text}')))");
         }
 
         private void button1_Click(object sender, EventArgs e)

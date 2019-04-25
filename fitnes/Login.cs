@@ -51,16 +51,17 @@ namespace fitnes
                 else
                 {
                     Hide();
-                    var role = int.Parse(user["idRole"].ToString());
-                    var workers = user["Login"].ToString();
-                    if (role == 1)
+                    CurrentUser.Role = int.Parse(user["idRole"].ToString());
+                    CurrentUser.Login = user["Login"].ToString();
+                    CurrentUser.UserId = int.Parse(user["idUsers"].ToString());
+                    if (CurrentUser.Role == 1)
                     {
                         new MainClientMenu().Show();
                     }
-                    else if (role == 2)
+                    else if (CurrentUser.Role == 2)
                     {
 
-                        new MainWorkers(workers).Show();
+                        new MainWorkers().Show();
                     }
                     else
                     {

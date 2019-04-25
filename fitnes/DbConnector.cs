@@ -62,5 +62,12 @@ namespace fitnes
 
             return dt;
         }
+
+        public static int ExecuteInsert(string query)
+        {
+            var command = new MySqlCommand(query, Connection);
+            command.ExecuteScalar();
+            return (int)command.LastInsertedId;
+        }
     }
 }
