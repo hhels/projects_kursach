@@ -42,7 +42,7 @@ namespace fitnes
             Connection = connection;
         }
 
-        public static DataTable ExecuteQuery(string query)
+        public static DataTable ExecuteQuery(string query) // SELECT 
         {
             if (Connection.State != ConnectionState.Open)
             {
@@ -63,11 +63,17 @@ namespace fitnes
             return dt;
         }
 
-        public static int ExecuteInsert(string query)
+        public static int ExecuteUpdate(string query) // INSERT, DELETE, UPDATE
         {
             var command = new MySqlCommand(query, Connection);
             command.ExecuteScalar();
             return (int)command.LastInsertedId;
+        }
+
+        public static string ExecuteScalar(string query) // SELECT одно поле
+        {
+            var command = new MySqlCommand(query, Connection);
+            return command.ExecuteScalar().ToString();
         }
     }
 }

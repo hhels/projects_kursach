@@ -28,5 +28,11 @@ namespace fitnes
             Hide();
             new MainClientGrup().Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new MainRecords().Show();
+        }
     }
 }

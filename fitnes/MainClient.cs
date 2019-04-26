@@ -68,16 +68,16 @@ namespace fitnes
             var selected = radioButton1.Checked ? "`9-10`" : "`15-16`";
             var worker = ((DataRowView)comboBox2.SelectedItem).Row["idWorkers"];
             var user = ((DataRowView)comboBox2.SelectedItem).Row["idUsers"];
-            var timeId = DbConnector.ExecuteInsert($"INSERT INTO Time (date, {selected}, Workers_idWorkers, Workers_idUser) VALUES ('{label1.Text}', 3, '{worker}', '{user}')");
+            var timeId = DbConnector.ExecuteUpdate($"INSERT INTO Time (date, {selected}, Workers_idWorkers, Workers_idUser) VALUES ('{label1.Text}', 3, '{worker}', '{user}')");
             var clientId = DbConnector.ExecuteQuery($"SELECT * FROM Clients WHERE idUsers = {CurrentUser.UserId}").AsEnumerable()
                                       .FirstOrDefault()["idClient"];
-            DbConnector.ExecuteInsert($"INSERT INTO Records (idWorker, time_idtime, Clients_idClient, Clients_idUsers) VALUES ('{worker}', {timeId}, {clientId}, {CurrentUser.UserId})");
+            DbConnector.ExecuteUpdate($"INSERT INTO Records (idWorker, time_idtime, Clients_idClient, Clients_idUsers) VALUES ('{worker}', {timeId}, {clientId}, {CurrentUser.UserId})");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //Hide();
-            //MainClientMenu.show();
+            Hide();
+            new MainClientMenu().Show();
         }
     }
 }

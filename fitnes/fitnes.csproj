@@ -86,6 +86,12 @@
     <Compile Include="MainDirector.Designer.cs">
       <DependentUpon>MainDirector.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainRecords.Designer.cs">
+      <DependentUpon>MainRecords.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWorkers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainDirector.resx">
       <DependentUpon>MainDirector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainRecords.resx">
+      <DependentUpon>MainRecords.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWorkers.resx">
       <DependentUpon>MainWorkers.cs</DependentUpon>
