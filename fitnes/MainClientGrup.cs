@@ -67,6 +67,7 @@ namespace fitnes
             var timeId = DbConnector.ExecuteUpdate($"INSERT INTO Time (date, `{selected}`, Workers_idWorkers, Workers_idUser) VALUES ('{label1.Text}', 1, '{worker}', '{user}')");
             var clientId = DbConnector.ExecuteScalar($"SELECT idClient FROM Clients WHERE idUsers = {CurrentUser.UserId}");
             DbConnector.ExecuteUpdate($"INSERT INTO Records (idWorker, time_idtime, Clients_idClient, Clients_idUsers) VALUES ('{worker}', {timeId}, {clientId}, {CurrentUser.UserId})");
+            MessageBox.Show("Вы записасались");
         }
 
         private void button3_Click(object sender, EventArgs e)
