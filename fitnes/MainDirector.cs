@@ -20,13 +20,14 @@ namespace fitnes
             label6.Text = DbConnector.ExecuteScalar($"SELECT COUNT(*) FROM Workers");
             var year = DateTime.Now.Year;
             var month = DateTime.Now.Month;
-            //label7.Text = (Convert.ToInt32(DbConnector.ExecuteScalar($"SELECT COUNT(*) FROM Records WHERE Date >= {year}.{month}.01")) * 2000).ToString();
-            label8.Text = (Convert.ToInt32(label6.Text) * 20000).ToString();
+            label7.Text = (Convert.ToInt32(DbConnector.ExecuteScalar($"SELECT COUNT(*) FROM Time WHERE date >= '{label9}'")) * 1500).ToString();
+            label8.Text = (Convert.ToInt32(label6.Text) * 660).ToString();
             dataGridView1.DataSource = DbConnector.ExecuteQuery($"SELECT * FROM Users");
             dataGridView3.DataSource = DbConnector.ExecuteQuery($"SELECT * FROM Clients");
             dataGridView4.DataSource = DbConnector.ExecuteQuery($"SELECT * FROM Workers");
             dataGridView5.DataSource = DbConnector.ExecuteQuery($"SELECT * FROM Time");
             dataGridView6.DataSource = DbConnector.ExecuteQuery($"SELECT * FROM Records");
+            label9.Text = DateTime.Now.ToString("MM.dd.yyyy");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,6 +53,11 @@ namespace fitnes
             new rabotniki().Show();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new Start().Show();
 
+        }
     }
 }

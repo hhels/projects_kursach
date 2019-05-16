@@ -100,6 +100,7 @@
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Name = "clienti";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "clienti";
             this.ResumeLayout(false);
             this.PerformLayout();

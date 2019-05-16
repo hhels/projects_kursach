@@ -61,13 +61,21 @@ namespace fitnes
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var selected = comboBox3.Text;
-            var worker = ((DataRowView)comboBox2.SelectedItem).Row["idWorkers"];
-            var user = ((DataRowView)comboBox2.SelectedItem).Row["idUsers"];
-            var timeId = DbConnector.ExecuteUpdate($"INSERT INTO Time (date, `{selected}`, Workers_idWorkers, Workers_idUser) VALUES ('{label1.Text}', 1, '{worker}', '{user}')");
-            var clientId = DbConnector.ExecuteScalar($"SELECT idClient FROM Clients WHERE idUsers = {CurrentUser.UserId}");
-            DbConnector.ExecuteUpdate($"INSERT INTO Records (idWorker, time_idtime, Clients_idClient, Clients_idUsers) VALUES ('{worker}', {timeId}, {clientId}, {CurrentUser.UserId})");
-            MessageBox.Show("Вы записасались");
+            try
+            {
+                var selected = comboBox3.Text;
+                var worker = ((DataRowView)comboBox2.SelectedItem).Row["idWorkers"];
+                var user = ((DataRowView)comboBox2.SelectedItem).Row["idUsers"];
+                var timeId = DbConnector.ExecuteUpdate($"INSERT INTO Time (date, `{selected}`, Workers_idWorkers, Workers_idUser) VALUES ('{label1.Text}', 1, '{worker}', '{user}')");
+                var clientId = DbConnector.ExecuteScalar($"SELECT idClient FROM Clients WHERE idUsers = {CurrentUser.UserId}");
+                DbConnector.ExecuteUpdate($"INSERT INTO Records (idWorker, time_idtime, Clients_idClient, Clients_idUsers) VALUES ('{worker}', {timeId}, {clientId}, {CurrentUser.UserId})");
+                MessageBox.Show("Вы записасались");
+            }
+            catch
+            {
+                MessageBox.Show("Ошибочка!!! Заполнены не все поля");
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)

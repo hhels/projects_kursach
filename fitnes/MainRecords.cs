@@ -50,5 +50,11 @@ JOIN Users AS U ON U.idUsers = W.idUser
 WHERE R.Clients_idUsers = {id}");
             comboBox1.DisplayMember = "idRecord";
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MainClientMenu().Show();
+        }
     }
 }
